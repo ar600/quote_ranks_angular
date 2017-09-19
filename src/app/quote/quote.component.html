@@ -1,0 +1,17 @@
+<h1>Add a Quote</h1>
+  <form class="quote" (submit)="onSubmit()">
+    <textarea name="text" rows="8" cols="80" required minlength='4' [(ngModel)]='quote.text' #text='ngModel'></textarea>
+    <p *ngIf='!text.valid'>minimum 4 characters required</p>
+    <br><br>
+    <b>Author:</b>
+    <input type="text" name="author" required minlength='1' [(ngModel)]='quote.author' #author='ngModel'>
+    <p *ngIf='!author.valid' >needs 1 char at least</p>
+    <br><br>
+    <input type="submit" name="submit" value="Add Quote">
+  </form>
+  <!-- {{quotes | json}} -->
+<h1>Quote List</h1>
+<div class="quote-list" *ngFor="let quote of quotes">
+  <app-quote-list [allquotes]='quote'></app-quote-list>
+
+</div>
